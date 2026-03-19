@@ -1,13 +1,15 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
-  --primary-green: #90EE90;
-  --primary-pink: #FFB6C1;
-  --primary-purple: #A020F0;
-  --glass-bg: rgba(255, 255, 255, 0.05);
+  --primary-green: #00ff88;
+  --primary-pink: #ff44ec;
+  --primary-purple: #a020f0;
+  --primary-blue: #00d4ff;
+  --bg-black: #050505;
+  --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --neon-shadow-green: 0 0 10px rgba(144, 238, 144, 0.5);
-  --neon-shadow-pink: 0 0 10px rgba(255, 182, 193, 0.5);
+  --neon-shadow-green: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3);
+  --neon-shadow-pink: 0 0 10px rgba(255, 68, 236, 0.5), 0 0 20px rgba(255, 68, 236, 0.3);
   --neon-shadow-purple: 0 0 10px rgba(160, 32, 240, 0.5);
 }
 
@@ -18,28 +20,38 @@
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', sans-serif; /* Fallback for Space Grotesk */
+  background: linear-gradient(135deg, #050505, #1a0b2e, #0b1e2e, #050505);
+  background-size: 400% 400%;
+  animation: meshGradient 15s ease infinite;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif; /* Fallback for Space Grotesk */
   min-height: 100vh;
   overflow-x: hidden;
 }
 
+@keyframes meshGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
+  border-radius: 20px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .glass:hover {
-  transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(160, 32, 240, 0.2);
+  transform: translateY(-10px) rotateX(5deg) scale(1.02);
+  border-color: transparent;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(160, 32, 240, 0.3);
 }
 
 /* Rotating Colorful Border Animation */
@@ -51,16 +63,18 @@ body {
   width: 200%;
   height: 200%;
   background: conic-gradient(
-    transparent, 
-    var(--primary-green), 
-    var(--primary-pink), 
-    var(--primary-purple), 
-    transparent 30%
+    from 0deg,
+    transparent,
+    #00ff88,
+    #ff44ec,
+    #00d4ff,
+    transparent 40%
   );
-  animation: rotate 4s linear infinite;
+  animation: rotate 3s linear infinite;
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 .glass:hover::before {
@@ -71,8 +85,8 @@ body {
   content: "";
   position: absolute;
   inset: 2px;
-  background: rgba(0, 0, 0, 0.9);
-  border-radius: 14px;
+  background: #0a0a0a;
+  border-radius: 18px;
   z-index: -1;
 }
 
