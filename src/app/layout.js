@@ -7,13 +7,13 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "AI Viral Shorts Script Writer - Hindi Creators ke Liye",
-  description: "Generate viral YouTube and Instagram Shorts scripts in seconds with AI. Specially designed for Hindi content creators.",
+  title: "AI Viral Shorts Script Writer",
+  description: "Generate viral YouTube and Instagram Shorts scripts in seconds with AI. Professional tool for content creators.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="hi">
+    <html lang="en">
       <body className={`${spaceGrotesk.className}`}>
         {children}
       </body>

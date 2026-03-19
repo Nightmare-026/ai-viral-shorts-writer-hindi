@@ -16,11 +16,11 @@ export async function POST(req) {
           {
             "role": "user",
             "content": `
-              You are a Viral Shorts Script Writer specialized in the Indian market (Hindi/Hinglish).
+              You are a Viral Shorts Script Writer specialized in the global English-speaking market.
               Your task is to write a highly engaging, viral 60-second script for a YouTube/Instagram Short on the following topic: "${topic}".
               
               TONE: ${tone}
-              LANGUAGE: Hinglish (Hindi + English mix as spoken by modern Indian creators).
+              LANGUAGE: English (Fluent, engaging, and modern).
               
               STRUCTURE:
               1. HOOK (0-3 sec): Must grab attention immediately with a surprising fact, question, or visual description.
@@ -30,12 +30,14 @@ export async function POST(req) {
               ADDITIONAL OUTPUT:
               - VIRAL_SCORE: A number from 0 to 100 based on how likely this is to go viral.
               - HASHTAGS: 5 trending hashtags related to the topic.
+              - THUMBNAIL_PROMPT: A detailed AI image generation prompt for a viral thumbnail.
               
               FORMAT: Return ONLY a valid JSON object with this structure:
               {
                 "script": "the full script text here",
                 "score": number,
-                "hashtags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
+                "hashtags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
+                "thumbnail_prompt": "string"
               }
             `
           }
