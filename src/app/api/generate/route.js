@@ -1,4 +1,10 @@
 export async function POST(req) {
+  if (!process.env.OPENROUTER_API_KEY) {
+    return new Response(JSON.stringify({ error: "API Key is missing! Please set OPENROUTER_API_KEY in Vercel environment variables." }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
   try {
     const { topic, tone } = await req.json();
 
