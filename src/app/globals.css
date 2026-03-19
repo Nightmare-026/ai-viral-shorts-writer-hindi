@@ -20,11 +20,11 @@
 }
 
 body {
-  background: linear-gradient(135deg, #050505, #1a0b2e, #0b1e2e, #050505);
+  background: linear-gradient(135deg, #050505, #1a0b2e, #0b2e1e, #050505);
   background-size: 400% 400%;
   animation: meshGradient 15s ease infinite;
   color: white;
-  font-family: 'Space Grotesk', sans-serif; /* Fallback for Space Grotesk */
+  font-family: 'Space Grotesk', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -36,10 +36,10 @@ body {
 }
 
 .glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.02); /* More transparent */
+  backdrop-filter: blur(25px); /* Stronger blur for premium glass feel */
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -66,8 +66,8 @@ body {
     from 0deg,
     transparent,
     #00ff88,
-    #ff44ec,
-    #00d4ff,
+    #a020f0,
+    #00ff88,
     transparent 40%
   );
   animation: rotate 3s linear infinite;
